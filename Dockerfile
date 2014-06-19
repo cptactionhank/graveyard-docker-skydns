@@ -3,8 +3,9 @@ FROM google/golang
 RUN go get -u github.com/skynetservices/skydns \
     && go install -v github.com/skynetservices/skydns
 
+ADD start.sh /start
+
 EXPOSE 53/udp
 
-ENTRYPOINT ["skydns", "-addr", "0.0.0.0:53", "-machines", "http://$ETCD_PORT_4001_TCP_ADDR:$ETCD_PORT_4001_TCP_PORT/"]
+ENTRYPOINT ["start"]
 
-CMD ["-nameservers", "8.8.8.8:53,8.8.4.4:53"]
