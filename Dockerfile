@@ -7,5 +7,5 @@ ADD start.sh /start
 
 EXPOSE 53/udp
 
-ENTRYPOINT ["start"]
+ENTRYPOINT ["/start"]
 
